@@ -1,0 +1,8 @@
+<form>
+    <input [(ngModel)]="creditCardInput" (change)="changeValue()" type="number" name="credit-card-debt" id="credit-card-debt">
+    <input [(ngModel)]="currentAccountInput" (change)="changeValue()" type="number" name="current-account" id="current-account">
+</form>
+<div class="result">
+    <div class="text">{{ calculatedDebt }} CHF</div>
+    <div class="label">Résultat</div>
+</div>
