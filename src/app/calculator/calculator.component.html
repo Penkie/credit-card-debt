@@ -1,12 +1,12 @@
 <form>
     <div class="input-group">
         <label for="credit-card-debt">Solde carte de crédit</label>
-        <input [(ngModel)]="creditCardInput" (change)="changeValue()" type="number" name="credit-card-debt" id="credit-card-debt">
+        <input inputmode="numeric" [(ngModel)]="creditCardInput" (change)="changeValue()" type="number" name="credit-card-debt" id="credit-card-debt">
         <div class="currency">CHF</div>
     </div>
     <div class="input-group">
         <label for="urrent-account">Compte courante</label>
-        <input [(ngModel)]="currentAccountInput" (change)="changeValue()" type="number" name="current-account" id="current-account">
+        <input inputmode="numeric" [(ngModel)]="currentAccountInput" (change)="changeValue()" type="number" name="current-account" id="current-account">
         <div class="currency">CHF</div>
     </div>
 </form>
