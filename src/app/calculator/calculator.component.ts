@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MoneyDataModel } from './money-data.model';
 
 @Component({
   selector: 'app-calculator',
@@ -13,30 +14,30 @@ export class CalculatorComponent implements OnInit {
   public calculatedDebt: number = 0;
 
   public ngOnInit(): void {
-    const storedCreditCardInput = localStorage.getItem('creditCardInput');
-    const storedCurrentAccountInput = localStorage.getItem('currentAccountInput');
-    const storedCurrentGlobalDebt = localStorage.getItem('currentGlobalDebt');
-
-    if (storedCreditCardInput && storedCurrentAccountInput && storedCurrentGlobalDebt) {
-      this.creditCardInput = Number(storedCreditCardInput);
-      this.currentAccountInput = Number(storedCurrentAccountInput);
-      this.currentGlobalDebt = Number(storedCurrentGlobalDebt);
-
-      this.changeValue();
+    const rawData = localStorage.getItem('saveData');
+    if (rawData) {
+      const data: MoneyDataModel = JSON.parse(rawData);
+      this.creditCardInput = data.creditCard;
+      this.currentAccountInput = data.currentAcount;
+      this.currentGlobalDebt = data.currentGlobalDebt;
     }
   }
 
   public changeValue(): void {
+    // calculate debt
     this.calculatedDebt = this.calculate();
+    // validate inputs
+    this.validateInputs();
 
+    // save to localStorage
+    const saveData = new MoneyDataModel(this.creditCardInput, this.currentAccountInput, this.currentGlobalDebt);
+    localStorage.setItem('saveData', JSON.stringify(saveData));
+  }
+
+  public validateInputs(): void {
     if (!this.creditCardInput) this.creditCardInput = 0;
     if (!this.currentAccountInput) this.currentAccountInput = 0;
     if (!this.currentGlobalDebt) this.currentGlobalDebt = 0;
-
-    // save to localStorage
-    localStorage.setItem('creditCardInput', this.creditCardInput.toString());
-    localStorage.setItem('currentAccountInput', this.currentAccountInput.toString());
-    localStorage.setItem('currentGlobalDebt', this.currentGlobalDebt.toString());
   }
 
   public calculate(): number {
