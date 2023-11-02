@@ -8,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class CalculatorComponent implements OnInit {
   public creditCardInput: number = 0;
   public currentAccountInput: number = 0;
+  public currentGlobalDebt: number = 0;
   
   public calculatedDebt: number = 0;
 
   public ngOnInit(): void {
     const storedCreditCardInput = localStorage.getItem('creditCardInput');
     const storedCurrentAccountInput = localStorage.getItem('currentAccountInput');
-    if (storedCreditCardInput && storedCurrentAccountInput) {
+    const storedCurrentGlobalDebt = localStorage.getItem('currentGlobalDebt');
+
+    if (storedCreditCardInput && storedCurrentAccountInput && storedCurrentGlobalDebt) {
       this.creditCardInput = Number(storedCreditCardInput);
       this.currentAccountInput = Number(storedCurrentAccountInput);
+      this.currentGlobalDebt = Number(storedCurrentGlobalDebt);
 
       this.changeValue();
     }
@@ -28,5 +32,6 @@ export class CalculatorComponent implements OnInit {
     // save to localStorage
     localStorage.setItem('creditCardInput', this.creditCardInput.toString());
     localStorage.setItem('currentAccountInput', this.currentAccountInput.toString());
+    localStorage.setItem('currentGlobalDebt', this.currentGlobalDebt.toString());
   }
 }

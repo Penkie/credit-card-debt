@@ -21,6 +21,7 @@
                 padding: 15px 15px;
                 border-radius: 5px;
                 background: #fbfbfb;
+                text-indent: 20px;
                 border: 2px solid transparent;
                 box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
                 
@@ -33,6 +34,14 @@
             .currency {
                 position: absolute;
                 right: 10px;
+                color: grey;
+                top: 35px;
+                font-size: 2.5rem;
+            }
+
+            .positive-or-negative {
+                position: absolute;
+                left: 10px;
                 color: grey;
                 top: 35px;
                 font-size: 2.5rem;

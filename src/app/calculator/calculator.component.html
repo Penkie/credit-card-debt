@@ -2,11 +2,20 @@
     <div class="input-group">
         <label for="credit-card-debt">Solde carte de crédit</label>
         <input inputmode="numeric" [(ngModel)]="creditCardInput" (change)="changeValue()" type="number" name="credit-card-debt" id="credit-card-debt">
+        <div class="positive-or-negative">-</div>
+        <div class="currency">CHF</div>
+    </div>
+    <div class="input-group">
+        <label for="global-debt">Dettes</label>
+        <input inputmode="numeric" [(ngModel)]="currentGlobalDebt" (change)="changeValue()" type="number" name="global-debt" id="global-debt">
+        <div class="positive-or-negative">-</div>
+
         <div class="currency">CHF</div>
     </div>
     <div class="input-group">
         <label for="urrent-account">Compte courante</label>
         <input inputmode="numeric" [(ngModel)]="currentAccountInput" (change)="changeValue()" type="number" name="current-account" id="current-account">
+        <div class="positive-or-negative">+</div>
         <div class="currency">CHF</div>
     </div>
 </form>
