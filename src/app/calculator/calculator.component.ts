@@ -27,11 +27,19 @@ export class CalculatorComponent implements OnInit {
   }
 
   public changeValue(): void {
-    this.calculatedDebt = this.currentAccountInput - this.creditCardInput - this.currentGlobalDebt;
+    this.calculatedDebt = this.calculate();
+
+    if (!this.creditCardInput) this.creditCardInput = 0;
+    if (!this.currentAccountInput) this.currentAccountInput = 0;
+    if (!this.currentGlobalDebt) this.currentGlobalDebt = 0;
 
     // save to localStorage
     localStorage.setItem('creditCardInput', this.creditCardInput.toString());
     localStorage.setItem('currentAccountInput', this.currentAccountInput.toString());
     localStorage.setItem('currentGlobalDebt', this.currentGlobalDebt.toString());
+  }
+
+  public calculate(): number {
+    return this.currentAccountInput - this.creditCardInput - this.currentGlobalDebt;
   }
 }
