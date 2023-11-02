@@ -27,7 +27,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   public changeValue(): void {
-    this.calculatedDebt = this.currentAccountInput - this.creditCardInput;
+    this.calculatedDebt = this.currentAccountInput - this.creditCardInput - this.currentGlobalDebt;
 
     // save to localStorage
     localStorage.setItem('creditCardInput', this.creditCardInput.toString());
